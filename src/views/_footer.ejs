@@ -1,0 +1,57 @@
+<footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="logo-mark footer-logo">
+          <span class="logo-line"></span>
+          <span class="logo-text">THE<br>PAINTER</span>
+          <span class="logo-line"></span>
+        </div>
+        <p>Consistently Excellent Painting Services<br>Petoskey & Northern Michigan</p>
+      </div>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#work">Our Work</a>
+        <a href="#area">Service Area</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-contact">
+        <a href="tel:2319399993">231-939-9993</a>
+        <p>323 Madison St, Petoskey, MI 49770</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; <span id="year"></span> The Painter, LLC. All rights reserved. | Website by <a href="https://www.boss.software" target="_blank">Boss Software</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const header = document.getElementById('header');
+      const toggle = document.getElementById('navToggle');
+      const nav = document.getElementById('mainNav');
+      const form = document.getElementById('contactForm');
+      const year = document.getElementById('year');
+      if (year) year.textContent = new Date().getFullYear();
+
+      toggle?.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      });
+      nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        toggle?.setAttribute('aria-expanded', 'false');
+      }));
+      window.addEventListener('scroll', () => {
+        header?.classList.toggle('scrolled', window.scrollY > 12);
+      }, { passive: true });
+
+      form?.addEventListener('submit', event => {
+        event.preventDefault();
+        alert('This static website is not connected to an email service yet. Please call 231-939-9993, or connect the form to a form-handling service before publishing.');
+      });
+    })();
+  </script>
